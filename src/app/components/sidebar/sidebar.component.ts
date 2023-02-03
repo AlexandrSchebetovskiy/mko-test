@@ -17,8 +17,8 @@ export class SidebarComponent implements OnInit{
   ngOnInit(): void {
     if(this.id){
       this.$message = this.messageService.getById(this.id)
-      console.log(this.id);
-      this.$message.subscribe((message) =>console.log(message) )
+      // console.log(this.id);
+      // this.$message.subscribe((message) =>console.log(message) )
     }
   }
 

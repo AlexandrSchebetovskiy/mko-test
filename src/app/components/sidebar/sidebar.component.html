@@ -1,9 +1,9 @@
 <div class="sidebar">
   <div class="sidebar__wrapper" *ngIf="$message | async as message;else empty">
     <div class="sidebar__content">
-      <h3 class="sidebar__nick">{{message.nickname}}</h3>
+      <h3 class="sidebar__nick">{{message.name}}</h3>
       <div class="sidebar__date">
-        {{message.datetime | date:'dd.MM.YYYY HH:mm:ss'}}
+        {{message.date | date:'dd.MM.YYYY HH:mm:ss'}}
       </div>
       <div class="sidebar__message">
         {{message.message}}

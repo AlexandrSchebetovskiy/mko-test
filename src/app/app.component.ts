@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import {tableConfig} from "../../table-config";
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'mko-test';
-
+  tableConfig = tableConfig
   getUrl(){
     return '/messages'
   }

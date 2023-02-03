@@ -1,5 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {IMessage} from "../../shared/types/message.interface";
+import {MessageService} from "../../shared/services/message.service";
 
 @Component({
   selector: 'app-row',
@@ -8,5 +9,8 @@ import {IMessage} from "../../shared/types/message.interface";
 })
 export class RowComponent {
 
-  @Input() data?: IMessage
+  @Input() message!: IMessage
+
+  constructor(public messageService: MessageService) {
+  }
 }

@@ -1,4 +1,7 @@
-<app-header></app-header>
-<app-table [url]="getUrl()"></app-table>
-<app-sidebar [id]="3"></app-sidebar>
-
+<div class="page">
+  <app-header></app-header>
+  <main class="main">
+    <app-table [url]="getUrl()" [tableConfig]="tableConfig"></app-table>
+    <app-sidebar [id]="3"></app-sidebar>
+  </main>
+</div>

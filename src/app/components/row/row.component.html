@@ -1,6 +1,4 @@
-<div class="table__row">
-  <div class="table__item">Id</div>
-  <div class="table__item">Name</div>
-  <div class="table__item">Message</div>
-  <div class="table__item">{{ 0 |  date:'dd.MM.YYYY HH:mm:ss'}}</div>
-</div>
+<div class="table__item">{{message.id}}</div>
+<div class="table__item">{{message.name}}</div>
+<div class="table__item">{{this.messageService.truncate(message.message)}}</div>
+<div class="table__item">{{ message.date |  date:'dd.MM.YYYY HH:mm:ss'}}</div>

@@ -1,6 +1,6 @@
 export interface IMessage {
   id: number
-  nickname: string
+  name: string
   message: string
-  datetime: string
+  date: string
 }
