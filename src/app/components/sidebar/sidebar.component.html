@@ -1,0 +1,27 @@
+<div class="sidebar">
+  <div class="sidebar__wrapper" *ngIf="$message | async as message;else empty">
+    <div class="sidebar__content">
+      <h3 class="sidebar__nick">{{message.nickname}}</h3>
+      <div class="sidebar__date">
+        {{message.datetime | date:'dd.MM.YYYY HH:mm:ss'}}
+      </div>
+      <div class="sidebar__message">
+        {{message.message}}
+      </div>
+    </div>
+    <div class="sidebar__actions">
+      <button class="button sidebar__button">
+        Редактировать &nbsp;
+        <i class="bi bi-pencil"></i>
+      </button>
+      <button class="button sidebar__button button--danger">
+        Удалить &nbsp;
+        <i class="bi bi-trash3"></i>
+      </button>
+    </div>
+  </div>
+</div>
+
+<ng-template #empty>
+  <div class="sidebar__empty"> Ни одна запись не выбрана.</div>
+</ng-template>

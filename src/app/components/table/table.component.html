@@ -1,0 +1,30 @@
+<div class="table">
+  <div class="table__search">
+    <input  type="text" placeholder="Поиск...">
+    <div class="table__search-icon">
+      <i class="bi bi-search"></i>
+    </div>
+  </div>
+
+  <div class="table__head">
+    <div class="table__item table__item--head">Id</div>
+    <div class="table__item table__item--head">Name</div>
+    <div class="table__item table__item--head">Message</div>
+    <div class="table__item table__item--head">Date</div>
+  </div>
+  <div class="table__body">
+
+    <ng-container *ngIf="$messages |async as messages">
+
+      <div class="table__row" *ngFor="let message of messages">
+        <div class="table__item">{{message.id}}</div>
+        <div class="table__item">{{message.nickname}}</div>
+        <div class="table__item">{{this.messageService.truncate(message.message)}}</div>
+        <div class="table__item">{{ message.datetime |  date:'dd.MM.YYYY HH:mm:ss'}}</div>
+      </div>
+    </ng-container>
+
+  </div>
+
+  <app-pagination></app-pagination>
+</div>
