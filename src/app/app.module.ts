@@ -8,8 +8,10 @@ import {HeaderComponent} from "./components/header/header.component";
 import {SidebarComponent} from "./components/sidebar/sidebar.component";
 import { TableComponent } from './components/table/table.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { RowComponent } from './components/row/row.component';
-import { PaginationComponent } from './components/pagination/pagination.component';
+import {FormatPipe} from "./shared/format.pipe";
+import {DatePipe} from "@angular/common";
+import { FormComponent } from './components/form/form.component';
+import {ReactiveFormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -18,15 +20,20 @@ import { PaginationComponent } from './components/pagination/pagination.componen
     HeaderComponent,
     SidebarComponent,
     TableComponent,
-    RowComponent,
-    PaginationComponent,
+    FormatPipe,
+    FormComponent,
+
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    ReactiveFormsModule,
   ],
-  providers: [MessageService],
+  providers: [
+    MessageService,
+    DatePipe,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

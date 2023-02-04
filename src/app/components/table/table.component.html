@@ -1,38 +1,51 @@
 <div class="table">
-  <div class="table__wrapper">
-    <div class="table__search">
-      <input  type="text" placeholder="Поиск...">
-      <div class="table__search-icon">
-        <i class="bi bi-search"></i>
+
+
+    <div class="table__head-wrap">
+      <div class="table__search">
+        <input  type="text" placeholder="Поиск...">
+        <div class="table__search-icon">
+          <i class="bi bi-search"></i>
+        </div>
       </div>
+      <div class="table__head">
+        <div class="table__item table__item--head" [style]="{width: col.width + '%'}" *ngFor="let col of tableConfig">{{col.title}}</div>
+        <div class="table__item table__item--head table__remove" [style]="{width: 5 + '%'}">
+<!--          <span>&times;</span>-->
+        </div>
+      </div>
+
     </div>
 
-    <div class="table__head">
-      <div class="table__item table__item--head" [style]="{width: row.width + '%'}" *ngFor="let row of tableConfig">{{row.title}}</div>
-    </div>
 
     <div class="table__body">
 
-      <ng-container *ngIf="$messages | async as messages">
+      <ng-container *ngIf="(this.messageService.$messages | async) as messages">
 
-        <div class="table__row" *ngFor="let message of messages">
+        <div
+          class="table__row"
+          [ngClass]="{active: active === message.id}"
+          *ngFor="let message of messages"
+          (click)="onRowClick(message.id)">
           <div
             class="table__item"
-            [style]="{width: row.width + '%'}"
-            *ngFor="let row of tableConfig">
-            {{message.id}}
+            *ngFor="let col of tableConfig"
+            [style]="{width: col.width + '%'}"
+          >
+            {{message[col.prop].toString() | format: col.prop : col.format}}
+          </div>
+          <div
+            class="table__item table__remove"
+            [style]="{width: 5 + '%'}"
+            (click)="remove($event,message.id)"
+          >
+            <span>&times;</span>
           </div>
 
 
-<!--          <div class="table__item">{{message.id}}</div>-->
-<!--          <div class="table__item">{{message.nickname}}</div>-->
-<!--          <div class="table__item">{{this.messageService.truncate(message.message)}}</div>-->
-<!--          <div class="table__item">{{ message.datetime |  date:'dd.MM.YYYY HH:mm:ss'}}</div>-->
         </div>
+
       </ng-container>
-
     </div>
-  </div>
 
-  <app-pagination></app-pagination>
 </div>

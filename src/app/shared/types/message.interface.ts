@@ -3,4 +3,5 @@ export interface IMessage {
   name: string
   message: string
   date: string
+  // acvite?: boolean
 }

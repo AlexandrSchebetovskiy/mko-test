@@ -5,7 +5,8 @@ export const tableConfig:ITableConfig =
     {
       title: "Id",
       width: 5,
-      prop: 'id'
+      prop: 'id',
+
     },
     {
       title: "Name",
@@ -14,13 +15,14 @@ export const tableConfig:ITableConfig =
     },
     {
       title: "Message",
-      width: 70,
+      width: 65,
       prop: 'message'
     },
     {
       title: "Date",
       width: 15,
-      prop: 'date'
+      prop: 'date',
+      format: 'dd.MM.YYYY HH:mm:ss'
     }
   ]
 

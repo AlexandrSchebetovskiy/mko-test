@@ -1,29 +1,10 @@
 {
   "messages": [
     {
-      "id": 1,
-      "name": "Ivan",
-      "message": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab minus nisi non omnis quod. Exercitationem quos sequi temporibus velit voluptates!",
-      "date": "Feb 02 2023 23:20:29"
-    },
-    {
-      "id": 2,
-      "name": "Max",
-      "message": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto beatae eaque earum, eligendi natus similique?",
-      "date": "Feb 02 2023 23:20:29"
-    },
-    {
-      "id": 3,
-      "name": "Alex",
-      "message": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam dolorem earum exercitationem magni minus? Accusamus alias consequatur, corporis doloremque et fugiat, harum in ipsum iusto necessitatibus numquam, omnis porro quidem.",
-      "date": "Feb 02 2023 23:20:29"
-    },
-    {
-      "id": 4,
-      "name": "Elena",
-      "message": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. A architecto, consectetur corporis culpa dolores doloribus enim et fugit, harum incidunt necessitatibus neque quaerat voluptates! At consequuntur, velit? A adipisci aperiam facere, fugit incidunt iusto, libero molestias nobis odio officiis placeat quam rem reprehenderit rerum sed sequi sit temporibus ut veniam.\n",
-      "date": "Feb 02 2023 23:20:29"
+      "name": "Bill",
+      "date": "0005-03-22",
+      "message": "Apple sucks",
+      "id": 1
     }
-
   ]
 }

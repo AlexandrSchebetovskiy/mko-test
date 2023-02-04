@@ -1,5 +1,5 @@
 export interface ICreateMessageRequest {
-  nickname: string
+  name: string
   message: string
-  datetime: Date
+  date: string
 }

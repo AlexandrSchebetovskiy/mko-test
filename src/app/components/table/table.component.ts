@@ -1,26 +1,40 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {MessageService} from "../../shared/services/message.service";
-import {Observable} from "rxjs";
+import {Observable, Subscription} from "rxjs";
 import {IMessage} from "../../shared/types/message.interface";
 import {IRowConfig, ITableConfig} from "../../shared/types/table-config.interface";
+import {DatePipe} from "@angular/common";
+import {ActivatedRoute, Params} from "@angular/router";
 
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss']
 })
-export class TableComponent implements OnInit{
+export class TableComponent{
   @Input() url!: string
   @Input() tableConfig: ITableConfig
+  @Output() changeActive: EventEmitter<number> = new EventEmitter<number>()
 
-  $messages: Observable<IMessage[]>
-
+  messages: IMessage[]
+  active: number
   constructor(public messageService: MessageService) {
-  }
 
-  ngOnInit(): void {
-    this.$messages = this.messageService.fetchAll()
   }
 
 
+  onRowClick(id: number) {
+    if(this.active === id) {
+      return  console.log('active')
+    }
+    this.active = id
+    this.changeActive.emit(id)
+  }
+
+  remove($event: any, id: number) {
+    $event.stopPropagation()
+    this.messageService.delete(id).subscribe((m) => {
+      this.messageService.$messages.next(this.messageService.$messages.value.filter(x => x.id !== id))
+    })
+  }
 }

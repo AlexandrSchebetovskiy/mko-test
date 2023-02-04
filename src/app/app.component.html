@@ -1,7 +1,7 @@
 <div class="page">
   <app-header></app-header>
-  <main class="main">
-    <app-table [url]="getUrl()" [tableConfig]="tableConfig"></app-table>
-    <app-sidebar [id]="3"></app-sidebar>
-  </main>
+<!--  <main class="main">-->
+    <app-table (changeActive)="onActiveChange($event)" [url]="getUrl()" [tableConfig]="tableConfig"></app-table>
+    <app-sidebar [id]="current"></app-sidebar>
+<!--  </main>-->
 </div>

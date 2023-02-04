@@ -1,0 +1,23 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">Add message</h4>
+  <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+</div>
+
+<form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="modal-body">
+    <div class="form__control">
+      <input type="text" placeholder="Name" formControlName="name">
+    </div>
+    <div class="form__control">
+      <input type="date" formControlName="date">
+    </div>
+    <div class="form__control">
+      <textarea rows="3" cols="auto" placeholder="Your message..." formControlName="message"></textarea>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="submit" class="button">Add</button>
+  </div>
+</form>
+
+
