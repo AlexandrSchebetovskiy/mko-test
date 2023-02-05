@@ -11,7 +11,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {FormatPipe} from "./shared/format.pipe";
 import {DatePipe} from "@angular/common";
 import { FormComponent } from './components/form/form.component';
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { TableContentComponent } from './components/table-content/table-content.component';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import {ReactiveFormsModule} from "@angular/forms";
     TableComponent,
     FormatPipe,
     FormComponent,
+    TableContentComponent,
 
   ],
   imports: [
@@ -29,6 +31,7 @@ import {ReactiveFormsModule} from "@angular/forms";
     HttpClientModule,
     NgbModule,
     ReactiveFormsModule,
+    FormsModule
   ],
   providers: [
     MessageService,

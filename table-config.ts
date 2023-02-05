@@ -15,12 +15,12 @@ export const tableConfig:ITableConfig =
     },
     {
       title: "Message",
-      width: 65,
+      width: 64,
       prop: 'message'
     },
     {
       title: "Date",
-      width: 15,
+      width: 16,
       prop: 'date',
       format: 'dd.MM.YYYY HH:mm:ss'
     }

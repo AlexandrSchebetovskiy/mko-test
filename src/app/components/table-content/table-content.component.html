@@ -1,0 +1,28 @@
+<ng-container *ngIf="(this.messageService.$messages | async) as messages;">
+
+  <div
+    class="table__row"
+    [ngClass]="{active: active === message.id}"
+    *ngFor="let message of messages"
+    (click)="onRowClick(message.id)">
+    <div
+      class="table__item"
+      *ngFor="let col of tableConfig"
+      [style]="{width: col.width + '%'}"
+    >
+      {{message[col.prop].toString() | format: col.prop : col.format}}
+    </div>
+    <div
+      class="table__item table__remove"
+      [style]="{width: 5 + '%'}"
+      (click)="remove($event,message.id)"
+    >
+      <span>&times;</span>
+    </div>
+
+
+  </div>
+
+</ng-container>
+
+

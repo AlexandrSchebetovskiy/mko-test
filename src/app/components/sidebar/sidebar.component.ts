@@ -1,9 +1,8 @@
 import {Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges} from '@angular/core';
 import {MessageService} from "../../shared/services/message.service";
-import {Observable, of, Subscription} from "rxjs";
+import {Subscription} from "rxjs";
 import {IMessage} from "../../shared/types/message.interface";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
-import {ICreateMessageRequest} from "../../shared/types/create-message-request.interface";
 
 @Component({
   selector: 'app-sidebar',
@@ -11,9 +10,9 @@ import {ICreateMessageRequest} from "../../shared/types/create-message-request.i
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent implements OnChanges, OnDestroy{
-  @Input() id?: number
+  @Input() id?: number | null
   message: IMessage | null
-  initialValue: any
+
   sub: Subscription
   constructor(private messageService: MessageService, private modalService: NgbModal) {
   }
@@ -34,16 +33,22 @@ export class SidebarComponent implements OnChanges, OnDestroy{
   }
   remove($event: any, id: number) {
     $event.stopPropagation()
-    this.messageService.delete(id).subscribe((m) => {
-      this.messageService.$messages.next(this.messageService.$messages.value.filter(x => x.id !== id))
-      this.message = null
-    })
+    const confirmed = confirm('Are you sure to remove element?')
+    if(confirmed) {
+      this.messageService.delete(id).subscribe((m) => {
+        this.messageService.$messages.next(this.messageService.$messages.value.filter(x => x.id !== id))
+        this.message = null
+      })
+    }
+
   }
   ngOnChanges(changes: SimpleChanges): void {
     if(changes.id.currentValue ) {
       this.sub = this.messageService.getById(changes.id.currentValue).subscribe((m) => {
         this.message = m
       })
+    } else {
+      this.message = null
     }
   }
 

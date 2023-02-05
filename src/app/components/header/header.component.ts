@@ -16,6 +16,7 @@ export class HeaderComponent {
   open(content:any) {
     this.modalService.open(content).result.then(
       (result) => {
+        console.log(result);
         this.messageService.create(result).subscribe((m) => {
           this.messageService.$messages.next(this.messageService.$messages.value.concat(m))
         })

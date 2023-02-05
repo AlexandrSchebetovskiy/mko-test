@@ -1,6 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {ICreateMessageRequest} from "../../shared/types/create-message-request.interface";
 import {IMessage} from "../../shared/types/message.interface";
 
 @Component({
@@ -19,16 +18,27 @@ export class FormComponent implements OnInit{
   }
 
   private initializeForm() {
+    const [date, time] = this.initialValues.date.split(' ')
+    console.log(this.initialValues.date)
+    console.log(date, time)
     this.form = new FormGroup({
       name: new FormControl(this.initialValues.name, Validators.required),
-      date: new FormControl(this.initialValues.date, Validators.required),
+      date: new FormControl(date, Validators.required),
+      time: new FormControl(time, Validators.required),
       message: new FormControl(this.initialValues.message, Validators.required),
     })
   }
 
   onSubmit() {
+    console.log(this.form.value)
+
     if(this.form.valid){
-      this.modal.close(this.form.value)
+      const formData = {
+        name: this.form.value.name,
+        message: this.form.value.message,
+        date: this.form.value.date+' '+this.form.value.time
+      }
+      this.modal.close(formData)
     }
   }
 }
